@@ -1,4 +1,4 @@
-# Personal Portfolio Hub 🚀
+# Personal Portfolio
 
 Welcome to my portfolio! A modern, responsive showcase of my work and skills, built with cutting-edge web technologies.
 
