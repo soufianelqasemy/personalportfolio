@@ -42,7 +42,7 @@ Welcome to my portfolio! A modern, responsive showcase of my work and skills, bu
 1. **Clone the repository**
    ```bash
    git clone https://github.com/soufianelqasemy/personalportfolio.git
-   cd personal-portfolio-hub
+   cd personalportfolio
    ```
 
 2. **Install dependencies**
