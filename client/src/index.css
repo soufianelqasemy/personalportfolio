@@ -1,0 +1,308 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 222 47% 5%;
+  --foreground: 210 40% 98%;
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 75%;
+  --popover: 222 47% 7%;
+  --popover-foreground: 210 40% 98%;
+  --card: 222 47% 7%;
+  --card-foreground: 210 40% 98%;
+  --border: 217 33% 17%;
+  --input: 217 33% 20%;
+  --primary: 166 85% 54%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 266 80% 76%;
+  --secondary-foreground: 210 40% 98%;
+  --accent: 217 33% 20%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 70% 35%;
+  --destructive-foreground: 210 40% 98%;
+  --ring: 166 85% 40%;
+  --radius: 0.5rem;
+  --sidebar-background: 224 71% 4%;
+  --sidebar-foreground: 210 20% 98%;
+  --sidebar-muted: 215 25% 27%;
+  --sidebar-muted-foreground: 217.9 10.6% 64.9%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+  
+  /* Make sure long text doesn't overflow on mobile */
+  p, span, h1, h2, h3, h4, h5, h6 {
+    @apply break-words;
+  }
+  
+  /* Fix width issues on resize */
+  html, body {
+    @apply overflow-x-hidden min-w-[320px];
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+}
+
+.animated-bg {
+  background: linear-gradient(-45deg, #0a192f, #121212, #1a2c4e, #171717);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  position: relative;
+}
+
+.animated-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310b981' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.3;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.timeline-dot::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background-color: hsl(var(--primary));
+  top: 24px;
+  bottom: -24px;
+  left: 11px;
+  z-index: 0;
+}
+
+.timeline-item:last-child .timeline-dot::before {
+  display: none;
+}
+
+.glow {
+  box-shadow: 0 0 25px rgba(45, 212, 191, 0.6);
+}
+
+/* Matrix effect for the background */
+.matrix-bg {
+  @apply font-mono text-xs text-primary;
+}
+
+/* Email and contact display */
+.email-text, .contact-text {
+  @apply overflow-hidden inline-block w-full break-all;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+.date-format {
+  @apply whitespace-nowrap;
+}
+
+/* Responsive fixes */
+@media screen and (max-width: 768px) {
+  .container {
+    @apply px-4;
+  }
+  
+  .email-text, .contact-text {
+    @apply text-sm;
+    width: 100%;
+    max-width: 100%;
+    word-break: break-word;
+  }
+  
+  .grid {
+    @apply gap-4;
+  }
+  
+  section {
+    @apply py-12;
+  }
+  
+  h1, h2, h3 {
+    @apply text-center;
+  }
+  
+  .hero-section {
+    @apply pt-20 pb-16;
+  }
+  
+  .rounded-full {
+    @apply mx-auto;
+  }
+}
+
+/* Fix layout issues on resize */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .email-container {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Enhanced card styles */
+.bg-card-blur {
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  box-shadow: 0 5px 15px rgba(45, 212, 191, 0.2);
+  transform: translateY(-5px);
+}
+
+/* Button effects */
+.bg-primary, .border-primary {
+  transition: all 0.3s ease;
+}
+
+.bg-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(45, 212, 191, 0.3);
+}
+
+/* Skill bar animation */
+.skill-progress {
+  transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Additional glow effects */
+.shadow-glow {
+  box-shadow: 0 0 20px rgba(13, 194, 155, 0.25);
+}
+
+.shadow-glow-sm {
+  box-shadow: 0 0 10px rgba(13, 194, 155, 0.2);
+}
+
+/* Radial gradient background */
+.bg-gradient-radial {
+  background-image: radial-gradient(var(--tw-gradient-stops));
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  /* Layout optimizations for better mobile experience */
+  section {
+    @apply py-10 !important;
+  }
+  
+  .section-padding {
+    @apply py-10 !important;
+  }
+  
+  /* Fix stacking on mobile */
+  .flex-col-mobile {
+    @apply flex-col !important;
+  }
+  
+  /* Fix text sizing on mobile */
+  .text-sm-mobile {
+    @apply text-sm !important;
+  }
+  
+  .text-base-mobile {
+    @apply text-base !important;
+  }
+  
+  .text-lg-mobile {
+    @apply text-lg !important;
+  }
+  
+  /* Fix padding and spacing on mobile */
+  .p-4-mobile {
+    @apply p-4 !important;
+  }
+  
+  .px-4-mobile {
+    @apply px-4 !important;
+  }
+  
+  .py-4-mobile {
+    @apply py-4 !important;
+  }
+  
+  .gap-4-mobile {
+    @apply gap-4 !important;
+  }
+  
+  /* Improve visibility on mobile */
+  .text-center-mobile {
+    @apply text-center !important;
+  }
+  
+  /* Make elements fit better on small screens */
+  .w-full-mobile {
+    @apply w-full !important;
+  }
+  
+  .m-auto-mobile {
+    @apply mx-auto !important;
+  }
+  
+  /* Reduce animation complexity on mobile */
+  .reduced-motion {
+    animation-duration: 0.5s !important;
+    transition-duration: 0.3s !important;
+  }
+  
+  /* Improve touch targets on mobile */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px] !important;
+  }
+  
+  /* Improve card layouts on mobile */
+  .card-mobile {
+    @apply flex-col rounded-lg overflow-hidden w-full !important;
+  }
+  
+  /* Hide certain elements on mobile to reduce clutter */
+  .hide-on-mobile {
+    @apply hidden !important;
+  }
+  
+  /* Show only on mobile */
+  .show-on-mobile {
+    @apply block !important;
+  }
+  
+  /* Better spacing for mobile forms */
+  input, textarea, button {
+    @apply py-3 px-4 text-base !important;
+  }
+  
+  /* Fix hero section on mobile */
+  .hero-section {
+    @apply min-h-[100svh] !important;
+  }
+}
